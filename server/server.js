@@ -8,13 +8,10 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://your-netlify-app.netlify.app" 
-  ],
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-
 app.use(express.json());
 
 // DB
