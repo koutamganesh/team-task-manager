@@ -20,8 +20,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log(err));
 
 // TEST
-app.get("/test", (req, res) => {
-  res.send("Server is working");
+app.get("/", (req, res) => {
+  res.send("🚀 Team Task Manager API is Live");
 });
 
 // ROUTES
