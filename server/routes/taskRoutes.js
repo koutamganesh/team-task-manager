@@ -16,7 +16,10 @@ router.get("/", auth, async (req, res) => {
   if (req.user.role === "admin") {
     tasks = await Task.find();
   } else {
-    tasks = await Task.find({ assignedTo: req.user.id });
+   router.get("/", auth, async (req, res) => {
+  const tasks = await Task.find();
+  res.json(tasks);
+});
   }
 
   res.json(tasks);
