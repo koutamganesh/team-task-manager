@@ -8,6 +8,20 @@ router.get("/", auth, async (req, res) => {
   res.json(tasks);
 });
 
+
+router.get("/", auth, async (req, res) => {
+
+  let tasks;
+
+  if (req.user.role === "admin") {
+    tasks = await Task.find();
+  } else {
+    tasks = await Task.find({ assignedTo: req.user.id });
+  }
+
+  res.json(tasks);
+});
+
 // CREATE TASK
 router.post("/", auth, async (req, res) => {
   const task = new Task(req.body);
